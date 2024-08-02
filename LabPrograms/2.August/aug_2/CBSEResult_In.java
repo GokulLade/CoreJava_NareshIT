@@ -90,10 +90,69 @@ If the conditions are not met, the output should be:
 
 The form submission not accepted
 -------------------------------------------------------------------------------------------*/
-class  
-{
-	public static void main(String[] args) 
-	{
-		System.out.println("Hello World!");
+class CBSEResult_In {
+	public void acceptDetailAndSubmit(String studentName, long rollNo, String schoolRegNo, String schoolName,
+			char gender, String citizenship, String board) {
+
+		CBSEResult_In cbse = new CBSEResult_In();
+
+		if (schoolRegNo.equals("CBSE01-100") && citizenship.equals("INDIA") && board.equals("CBSE")) {
+			int math = 90, science = 85, english = 50, socialScience = 90, physicalEducation = 100;
+
+			char g = cbse.calculateGrade(math, science, english, socialScience, physicalEducation);
+
+			cbse.displayDetails(studentName, rollNo, schoolRegNo, schoolName, gender, citizenship, board, math, science,
+					english, socialScience, physicalEducation, g);
+		} else {
+			System.out.println("The form submission not accepted");
+		}
+	}
+
+	public char calculateGrade(int math, int science, int english, int socialScience, int physicalEducation) {
+		int avg = (math + science + english + socialScience + physicalEducation) / 5;
+		char grade = 'F';
+		if (avg > 80 && avg <= 100) {
+			grade = 'A';
+		} else if (avg > 60 && avg <= 80) {
+			grade = 'B';
+		} else if (avg > 40 && avg <= 60) {
+			grade = 'C';
+		} else if (avg <= 40) {
+			grade = 'F';
+		}
+
+		return grade;
+
+	}
+
+	public void displayDetails(String studentName, long rollNo, String schoolRegNo, String schoolName, char gender,
+			String citizenship, String board, int math, int science, int english, int socialScience,
+			int physicalEducation, char g) {
+
+		System.out.println("The name of student : " + studentName);
+		System.out.println("The rollNo :" + rollNo);
+		System.out.println("The schoolRegNo  :" + schoolRegNo);
+		System.out.println("The SchoolName : " + schoolName);
+		System.out.println("Gender : " + gender);
+		System.out.println("Citizenship :" + citizenship);
+		System.out.println("Board :  " + board);
+
+		System.out.println("-----------------------------------------------------");
+		System.out.println("=========================Marks=======================");
+		System.out.println("Math :  " + math);
+		System.out.println("Science :  " + science);
+		System.out.println("English :  " + english);
+		System.out.println("Social Science :  " + socialScience);
+		System.out.println("Physical Education :  " + physicalEducation);
+
+		System.out.println("-----------------------------------------------------");
+		System.out.println("==========================GRADE======================");
+		System.out.println("THE TOTAL MARKS AS GRADE IS " + g);
+
+	}
+
+	public static void main(String[] args) {
+		CBSEResult_In cb = new CBSEResult_In();
+		cb.acceptDetailAndSubmit("Gokul", 000007, "CBSE01-100", "DAV", 'M', "INDIA", "CBSE");
 	}
 }
