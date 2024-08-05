@@ -30,7 +30,7 @@ x y z*/
 
 class PrintChar
 {
-	public void print_Chars(char char1,char char2, int n){
+	public static void print_Chars(char char1,char char2, int n){
 		
 		int count=0;
 		while(char1<='z')
@@ -48,7 +48,6 @@ class PrintChar
 	}
 	public static void main(String[] args) 
 	{
-		PrintChar pc=new PrintChar();
-		pc.print_Chars('(','z',20);
+		print_Chars('(','z',20);
 	}
 }
